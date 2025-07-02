@@ -1,4 +1,6 @@
 function lowest_secondlowest(arr) {
+  if (!arr || arr.length === 0) return [];
+
   var lowest = Infinity;
   var secondLowest = Infinity;
 
@@ -11,7 +13,7 @@ function lowest_secondlowest(arr) {
     }
   }
 
-  return [lowest, secondLowest];
+  return secondLowest === Infinity ? [lowest, null] : [lowest, secondLowest];
 }
 
 console.log(lowest_secondlowest([10, 343445353, 3453445, 3453545353453]));
