@@ -129,4 +129,4 @@ function solve(arr) {
   return -1;
 }
 
-console.log(solve([1, 2, 3, 4, 2, 3, 1]));
+console.log(solve([1, 2, 3, 4, 2, 3, 1, 5,4]));
