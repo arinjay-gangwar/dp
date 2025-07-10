@@ -10,13 +10,14 @@
 //   //     return i;
 //   //   }
 //   // }
+
 //   // return -1;
 
-//   let tot = arr.reduce((a, b) => a + b, 0);
+//   let total = arr.reduce((a, b) => a + b, 0);
 //   let lsum = 0;
 
 //   for (let i = 0; i < arr.length; i++) {
-//     let rsum = tot - lsum - arr[i];
+//     let rsum = total - lsum - arr[i];
 
 //     if (lsum === rsum) {
 //       return i;
@@ -28,8 +29,7 @@
 //   return -1;
 // }
 
-// console.log(solve([1, 2, 3, 4, 2, 3, 1]));
-// console.log(solve([6, 7, 1, 2, 3, 4, 2, 3, 1, 6, 1]));
+// console.log(solve([1, 2, 3, 4, 3, 2, 1]));
 
 // function solve(str) {
 //   let newStr = str.split(" ");
@@ -37,7 +37,7 @@
 //   return newStr.join(" ");
 // }
 
-// console.log(solve("this is a string boss"));
+// console.log(solve("this is a sentence"));
 
 // function solve(arr) {
 //   if (!arr || arr.length === 0) return [];
@@ -57,10 +57,6 @@
 //   return sl === -Infinity ? [l, null] : [l, sl];
 // }
 
-// console.log(
-//   solve([1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
-// );
-
 // function solve(arr) {
 //   if (!arr || arr.length === 0) return [];
 
@@ -79,7 +75,82 @@
 //   return ss === Infinity ? [s, null] : [s, ss];
 // }
 
-// console.log(solve([10, 343445353, 3453445, 3453545353453]));
+// console.log(solve([1, 2, 34, 6, 23, 87, 390]));
+
+// function solve(arr, k) {
+//   if (k <= 0 || k > arr.length) return "";
+
+//   let longest = "";
+
+//   for (let i = 0; i <= arr.length - k; i++) {
+//     let temp = "";
+
+//     for (let j = i; j < i + k; j++) {
+//       temp += arr[j];
+//     }
+
+//     if (temp.length > longest.length) {
+//       longest = temp;
+//     }
+//   }
+
+//   return longest;
+// }
+
+// function solve(arr, k) {
+//   if (k <= 0 || k > arr.length) return "";
+
+//   const lengths = arr.map((a) => a.length);
+//   let currentSum = 0,
+//     maxSum = 0,
+//     maxIndex = 0;
+
+//   for (let i = 0; i < k; i++) {
+//     currentSum += lengths[i];
+//   }
+//   maxSum = currentSum;
+
+//   for (let i = 1; i <= arr.length - k; i++) {
+//     currentSum = currentSum - lengths[i - 1] + lengths[i + k - 1];
+
+//     if (currentSum > maxSum) {
+//       maxSum = currentSum;
+//       maxIndex = i;
+//     }
+//   }
+
+//   return arr.slice(maxIndex, maxIndex + k).join("");
+// }
+
+// console.log(solve(["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], 2));
+// console.log(
+//   solve(
+//     ["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],
+//     2
+//   )
+// );
+
+// function solve(str) {
+//   let word = "";
+//   let arr = [];
+
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] !== " ") {
+//       word += str[i];
+//     }
+
+//     if (str[i] === " ") {
+//       arr.push(word);
+//       word = "";
+//     }
+//   }
+
+//   arr.push(word);
+
+//   return arr;
+// }
+
+// console.log(solve("this is a sentence hola, how are you?"));
 
 // function solve(arr) {
 //   return arr.reduce((a, b) => a ^ b, 0);
@@ -131,54 +202,4 @@
 //   }
 // }
 
-// console.log(solve([1, 2, 3, 4, 5, 6, 7, 8], 11));
-
-// function solve(arr, k) {
-//   if (k <= 0 || k > arr.length) return "";
-
-//   let longest = "";
-
-//   for (let i = 0; i <= arr.length - k; i++) {
-//     let temp = "";
-
-//     for (let j = i; j < i + k; j++) {
-//       temp += arr[j];
-//     }
-
-//     if (temp.length > longest.length) {
-//       longest = temp;
-//     }
-//   }
-
-//   return longest;
-// }
-
-// console.log(solve(["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], 2));
-// console.log(
-//   solve(
-//     ["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],
-//     2
-//   )
-// );
-
-function solve(str) {
-  let word = "";
-  let arr = [];
-
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== " ") {
-      word += str[i];
-    }
-
-    if (str[i] === " ") {
-      arr.push(word);
-      word = "";
-    }
-  }
-
-  arr.push(word);
-
-  return arr;
-}
-
-console.log(solve("This is a Sentence"));
+// console.log(solve([1, 2, 3, 45, 6, 7, 8], 15));
