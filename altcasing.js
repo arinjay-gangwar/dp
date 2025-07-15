@@ -5,4 +5,4 @@ function altcasing(str) {
     .join("");
 }
 
-console.log(altcasing("tHis Is a Alt CaSe String"));
+console.log(altcasing("tHis Is a Alt CaSe String and tHIS iS Fun"));
