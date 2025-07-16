@@ -24,4 +24,4 @@ function twoSum(arr, target) {
   }
 }
 
-console.log(twoSum([3, 2, 8, 3], 6));
+console.log(twoSum([3, 2, 8, 3, 7, 9], 15));
