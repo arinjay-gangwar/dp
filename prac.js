@@ -1,3 +1,12 @@
+// function solve(str) {
+//   return str
+//     .split("")
+//     .map((s) => (s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase()))
+//     .join("");
+// }
+
+// console.log(solve("tHis Is a Alt CaSe String and tHIS iS Fun"));
+
 // function solve(arr) {
 //   // for (let i = 0; i < arr.length; i++) {
 //   //   let left = arr.slice(0, i);
@@ -10,14 +19,13 @@
 //   //     return i;
 //   //   }
 //   // }
-
 //   // return -1;
 
-//   let tot = arr.reduce((a, b) => a + b, 0);
+//   let totSum = arr.reduce((a, b) => a + b, 0);
 //   let lsum = 0;
 
 //   for (let i = 0; i < arr.length; i++) {
-//     let rsum = tot - lsum - arr[i];
+//     let rsum = totSum - lsum - arr[i];
 
 //     if (lsum === rsum) {
 //       return i;
@@ -25,19 +33,22 @@
 
 //     lsum += arr[i];
 //   }
-
 //   return -1;
 // }
 
-// console.log(solve([1, 2, 3, 4, 5, 3, 4, 2, 1]));
+// console.log(solve([1, 2, 3, 4, 5, 3, 2, 4, 1]));
 
 // function solve(str) {
 //   let nstr = str.split(" ");
-//   nstr = nstr.map((a) => a[0].toUpperCase() + a.slice(1));
+//   nstr = nstr.map((s) => s[0].toUpperCase() + s.slice(1));
 //   return nstr.join(" ");
 // }
 
-// console.log(solve("this is a string of a sentence"));
+// console.log(
+//   solve(
+//     "this is a sentence and the output will capitalize first character of each word."
+//   )
+// );
 
 // function solve(arr) {
 //   if (!arr || arr.length === 0) return [];
@@ -57,16 +68,17 @@
 //   return sl === -Infinity ? [l, null] : [l, sl];
 // }
 
-// console.log(solve([1, 6, 3, 8, 2, 7, 9]));
+// console.log(
+//   solve([1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+// );
 
 // function solve(arr, k) {
 //   // if (k <= 0 || k > arr.length) return "";
 
 //   // let longest = "";
 
-//   // for (let i = 0; i < arr.length - k; i++) {
+//   // for (let i = 0; i <= arr.length - k; i++) {
 //   //   let temp = "";
-
 //   //   for (let j = i; j < i + k; j++) {
 //   //     temp += arr[j];
 //   //   }
@@ -81,8 +93,8 @@
 //   if (k <= 0 || k > arr.length) return "";
 
 //   const lengths = arr.map((s) => s.length);
-//   let curSum = 0,
-//     maxSum = 0,
+//   let maxSum = 0,
+//     curSum = 0,
 //     maxIdx = 0;
 
 //   for (let i = 0; i < k; i++) {
@@ -90,12 +102,12 @@
 //   }
 //   maxSum = curSum;
 
-//   for (let i = 1; i < arr.length - k; i++) {
+//   for (let i = 1; i <= arr.length - k; i++) {
 //     curSum = curSum - lengths[i - 1] + lengths[i + k - 1];
 
 //     if (curSum > maxSum) {
 //       maxSum = curSum;
-//       maxIdx = 1;
+//       maxIdx = i;
 //     }
 //   }
 
@@ -128,7 +140,9 @@
 //   return ss === Infinity ? [s, null] : [s, ss];
 // }
 
-// console.log(solve([1, 6, 3, 8, 2, 7, 9]));
+// console.log(
+//   solve([1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+// );
 
 // function solve(str) {
 //   let word = "";
@@ -144,13 +158,12 @@
 //       word = "";
 //     }
 //   }
-
 //   arr.push(word);
 
 //   return arr;
 // }
 
-// console.log(solve("this is a string in a sentence"));
+// console.log(solve("This is a Sentence"));
 
 // function solve(arr) {
 //   return arr.reduce((a, b) => a ^ b, 0);
@@ -202,4 +215,4 @@
 //   }
 // }
 
-// console.log(solve([3, 2, 8, 3], 6));
+// console.log(solve([3, 2, 8, 3], 10));
