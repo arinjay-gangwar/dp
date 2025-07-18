@@ -3,11 +3,11 @@ function maxSumInSmallestSubArray(arr, target) {
     start = 0,
     minLength = Infinity;
 
-  for (let i = 0; i < arr.length; i++) {
-    currentSum += arr[i];
+  for (let end = 0; end < arr.length; end++) {
+    currentSum += arr[end];
 
     while (currentSum >= target) {
-      minLength = Math.min(minLength, i - start + 1);
+      minLength = Math.min(minLength, end - start + 1);
       currentSum -= arr[start];
       start++;
     }
