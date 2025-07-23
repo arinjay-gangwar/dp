@@ -1,3 +1,6 @@
+// Returns the index where the array is balanced (left sum == right sum), or -1 if not found
+// arr[i] itself is not included in either sum (standard behavior)
+
 function equalsideofarray(arr) {
   //   // Bruteforce -> TC : O(n^2)
 

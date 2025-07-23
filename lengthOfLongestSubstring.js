@@ -1,3 +1,6 @@
+// Finds the length of the longest substring without repeating characters
+// Optionally, it can return the actual longest substring instead of just its length
+
 function lengthOfLongestSubstring(s) {
   // // Approach 1: Sliding Window using Set — Time Complexity: O(n)
 

@@ -1,3 +1,6 @@
+// Alternates the case of each character in the string
+// Converts uppercase to lowercase and vice versa
+
 function altcasing(str) {
   return str
     .split("")

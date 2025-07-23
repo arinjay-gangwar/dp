@@ -1,3 +1,5 @@
+// Returns true if the number is a palindrome, false otherwise
+
 function isNumberPalindrome(num) {
   if (num < 0) return false;
 

@@ -1,3 +1,5 @@
+// Finds the largest and second largest distinct values from an array of integers
+
 function largest_secondlargest(arr) {
   if (!arr || arr.length === 0) return [];
 
