@@ -1,3 +1,5 @@
+// Finds the lowest and second lowest distinct values from an array of integers
+
 function lowest_secondlowest(arr) {
   if (!arr || arr.length === 0) return [];
 
