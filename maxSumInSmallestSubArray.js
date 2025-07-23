@@ -1,3 +1,5 @@
+// Finds the length of the smallest subarray with sum ≥ target
+
 function maxSumInSmallestSubArray(arr, target) {
   let currentSum = 0,
     start = 0,
