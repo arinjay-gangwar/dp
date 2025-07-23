@@ -1,3 +1,5 @@
+// Finds the longest string formed by concatenating k consecutive strings from an array
+
 function longestconsecutivestring(arr, k) {
   if (k <= 0 || k > arr.length) return "";
 
