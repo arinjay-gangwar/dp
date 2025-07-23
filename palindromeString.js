@@ -1,3 +1,5 @@
+// Returns true if the string is a palindrome, false otherwise
+
 function palindromeString(str) {
   // Approach 1 using built in
 
