@@ -33,3 +33,7 @@ function palindromeString(str) {
   // All characters matched
   return true;
 }
+
+console.log(palindromeString("madam"));
+console.log(palindromeString("abcddcba"));
+console.log(palindromeString("abcddcbaabd"));
