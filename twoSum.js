@@ -1,3 +1,5 @@
+// Find two distinct elements in the array whose sum equals the target, and return their indices.
+
 function twoSum(arr, target) {
   // // Bruteforce -> TC : O(n^2)
 
@@ -8,6 +10,7 @@ function twoSum(arr, target) {
   //     }
   //   }
   // }
+  // return null;
 
   // Optimal -> TC : O(n) using Hash
 
@@ -22,6 +25,7 @@ function twoSum(arr, target) {
 
     lookup[arr[i]] = i;
   }
+  return null;
 }
 
 console.log(twoSum([3, 2, 8, 3, 7, 9], 15));
