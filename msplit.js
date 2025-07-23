@@ -1,3 +1,5 @@
+// Manually splits a string using space as the delimiter (mimics split(" "))
+
 function msplit(str) {
   var arr = [];
   var word = "";
