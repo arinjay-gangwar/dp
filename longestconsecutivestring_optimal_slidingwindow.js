@@ -4,7 +4,7 @@
 // Using a sliding window on string lengths to avoid repeated joins.
 // True O(n) single pass — optimal for large arrays and values of `k`.
 
-function solve(arr, k) {
+function longestconsecutivestring_optimal_slidingwindow(arr, k) {
   if (k <= 0 || k > arr.length) return "";
 
   const lengths = arr.map((a) => a.length);
@@ -30,9 +30,14 @@ function solve(arr, k) {
   return arr.slice(maxIdx, maxIdx + k).join("");
 }
 
-console.log(solve(["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"], 2));
 console.log(
-  solve(
+  longestconsecutivestring_optimal_slidingwindow(
+    ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"],
+    2
+  )
+);
+console.log(
+  longestconsecutivestring_optimal_slidingwindow(
     ["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"],
     2
   )
