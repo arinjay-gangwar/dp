@@ -16,7 +16,7 @@ function insertionSort(arr) {
 }
 
 // Swap-Based (Bubble-Style Insertion)
-// function insertionsort(arr) {
+// function insertionSort(arr) {
 //   for (let i = 1; i < arr.length; i++) {
 //     for (let j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
 //       let temp = arr[j];
@@ -28,5 +28,5 @@ function insertionSort(arr) {
 // }
 
 console.log(
-  insertionsort([10, 343445353, 3453445, 3453545353453, 3, 7, 2, 1, 4])
+  insertionSort([10, 343445353, 3453445, 3453545353453, 3, 7, 2, 1, 4])
 );
