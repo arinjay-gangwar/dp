@@ -438,3 +438,94 @@ console.log(solve18([7, 3, 7, 5, 5, 3, 9])); // 9
 console.log(solve18([4, 4, 6, 6, 9, 9, 2, 2, 11])); // 11
 console.log(solve18([42])); // 42
 console.log(solve18([1, 1, 2, 2, 3, 3])); // 0 ❌ No number appears an odd number of times
+
+// Finds maximum in an array of integers
+
+function solve19(arr) {
+  if (!arr || arr.length === 0) return null;
+
+  let max = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) max = arr[i];
+  }
+
+  return max;
+}
+
+console.log(solve19([-12, -43, -54, -6, -587, -23, -63]));
+console.log(solve19([12, 43, 54, 6, 587, 23, 63]));
+
+// Filter only even numbers from an array
+
+function solve20(arr) {
+  // return arr.filter((num) => num % 2 === 0);
+
+  let evenArr = [];
+
+  for (const value of arr) {
+    if (value % 2 === 0) evenArr.push(value);
+  }
+
+  return evenArr;
+}
+
+console.log(solve20([12, 43, 54, 6, 587, 23, 63]));
+
+// Sort array in ascending and desending order
+
+function solve21(arr) {
+  const ascending = [...arr].sort((a, b) => a - b);
+  // const descending = [...arr].sort((a, b) => b - a);
+  const descending = [...ascending].reverse();
+
+  return {
+    ascending,
+    descending,
+  };
+}
+
+console.log(solve21([12, 43, 54, 6, 587, 23, 63]));
+
+// Using Bubble Sort
+
+function solve22(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let swapped = false;
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        swapped = true;
+      }
+    }
+    if (!swapped) break;
+  }
+
+  const descending = [...arr].reverse();
+
+  return { ascending: arr, descending };
+}
+
+console.log(solve22([12, 43, 54, 6, 587, 23, 63]));
+
+function uniqueObjectsFromArrayofObjs(arr) {
+  let seen = new Set();
+  let result = [];
+
+  for (const value of arr) {
+    if (!seen.has(value.name)) {
+      seen.add(value.name);
+      result.push(value);
+    }
+  }
+  return result;
+}
+
+const input = [
+  { name: "Alice" },
+  { name: "Bob" },
+  { name: "Alice" },
+  { name: "Charlie" },
+];
+
+console.log(uniqueObjectsFromArrayofObjs(input));
