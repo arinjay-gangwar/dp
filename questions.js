@@ -39,3 +39,12 @@
 
 // Q18) Alternates the case of each character in the string
 // Converts uppercase to lowercase and vice versa
+
+// Q19) Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+// Checks if two strings are anagrams, accounting for all Unicode characters
+
+// Q20) Function to reverse the order of words in a sentence (words only, not characters)
+
+// Q21) Remove Duplicates by ID from an Array of Objects
+
+// Q22) Remove Duplicates from an Array
