@@ -1,32 +1,128 @@
-// Return true if the input string is a palindrome; otherwise, return false.
+// Find two distinct elements in an array whose sum equals a target. Return their indices.
 
-function palindromeString(str) {
-  // // Using builtin Methods
+function twoSum(arr, target) {
+  // // Bruteforce
 
-  // return str === str.split("").reverse().join("");
+  // for (let i = 0; i < arr.length; i++) {
+  //   for (let j = i + 1; j < arr.length; j++) {
+  //     if (arr[i] + arr[j] === target) {
+  //       return [i, j];
+  //     }
+  //   }
+  // }
+  // return null;
 
-  // Using Two Pointers
+  // Optimal
 
-  let left = 0;
-  let right = str.length - 1;
+  // const lookup = {};
 
-  while (left < right) {
-    if (str[left] !== str[right]) return false;
-    left++;
-    right--;
+  // for (let i = 0; i < arr.length; i++) {
+  //   let diff = target - arr[i];
+
+  //   if (lookup.hasOwnProperty(diff)) {
+  //     return [lookup[diff], i];
+  //   }
+
+  //   lookup[arr[i]] = i;
+  // }
+  // return null;
+
+  // Similar to Object but uses Map();
+
+  const nmap = new Map();
+
+  for (let i = 0; i < arr.length; i++) {
+    let diff = target - arr[i];
+
+    if (nmap.has(diff)) {
+      return [nmap.get(diff), i];
+    }
+
+    nmap.set(arr[i], i);
   }
-
-  return true;
+  return null;
 }
 
-console.log(palindromeString("madam"));
-console.log(palindromeString("johnson"));
+console.log(twoSum([4, 6, 2, 8, 9, 21, 65, 345], 366));
 
-// Return the index where the array is balanced (left sum == right sum), or -1 if not found.
-// The element at the index itself is not included in either sum.
+// Find the length of the longest substring without repeating characters. Optionally, also return the actual substring.
+
+function longestSubString(str) {
+  // const nmap = new Map();
+
+  // let start = 0,
+  //   maxLen = 0,
+  //   maxIndex = 0;
+
+  // for (let end = 0; end < str.length; end++) {
+  //   let char = str[end];
+
+  //   if (nmap.has(char) && nmap.get(char) >= start) {
+  //     start = nmap.get(char) + 1;
+  //   }
+
+  //   nmap.set(char, end);
+
+  //   if (end - start + 1 > maxLen) {
+  //     maxIndex = start;
+  //     maxLen = end - start + 1;
+  //   }
+  // }
+
+  // return str.slice(maxIndex, maxIndex + maxLen);
+  // // return maxLen; // Uncomment for getting length
+
+  const nset = new Set();
+
+  let start = 0,
+    maxLen = 0,
+    maxIndex = 0;
+
+  for (let end = 0; end < str.length; end++) {
+    while (nset.has(str[end])) {
+      nset.delete(str[start]);
+      start++;
+    }
+
+    nset.add(str[end]);
+    // maxLen = Math.max(maxLen, end - start + 1);
+
+    if (end - start + 1 > maxLen) {
+      maxIndex = start;
+      maxLen = end - start + 1;
+    }
+  }
+
+  // return maxLen;
+  return str.slice(maxIndex, maxIndex + maxLen);
+}
+
+console.log(longestSubString("abcbccabab"));
+console.log(longestSubString("bbbbb"));
+console.log(longestSubString("pwwkew"));
+console.log(longestSubString(""));
+console.log(longestSubString("dvdf"));
+
+// Return an object containing the count of each character in a string.
+
+function counts(str) {
+  let count = {};
+
+  for (const char of str) {
+    count[char] = (count[char] || 0) + 1;
+  }
+
+  return count;
+}
+
+console.log(counts("Johnny"));
+
+// Return the index where the array is balanced (i.e., sum of elements on the left equals the sum on the right).
+// The element at that index is not included in either sum.
+// If no such index exists, return -1.
 
 function balanced(arr) {
-  // // Using Builtin Methods
+  // // Bruteforce
 
   // for (let i = 0; i < arr.length; i++) {
   //   let left = arr.slice(0, i);
@@ -35,13 +131,15 @@ function balanced(arr) {
   //   let lsum = left.reduce((a, b) => a + b, 0);
   //   let rsum = right.reduce((a, b) => a + b, 0);
 
-  //   if (lsum === rsum) return i;
+  //   if (lsum === rsum) {
+  //     return i;
+  //   }
   // }
   // return -1;
 
-  // Using Optimal Approach
+  // Optimal
 
-  let maxSum = arr.reduce((a, b) => a + b, 0);
+  const maxSum = arr.reduce((a, b) => a + b, 0);
   let lsum = 0;
 
   for (let i = 0; i < arr.length; i++) {
@@ -54,81 +152,117 @@ function balanced(arr) {
   return -1;
 }
 
-console.log(balanced([1, 2, 4, 3, 5, 2, 1, 3, 4]));
+console.log(balanced([3, 4, 2, 1, 5, 2, 3, 4, 1]));
 
-// Manually reverse a string (mimics str.split("").reverse().join("")) without using built-in reverse functions.
+// Manually reverse a string (without using built-in reverse methods like split("").reverse().join("")).
 
 function mreverse(str) {
-  let rev = "";
+  let rev = [];
 
   for (let i = str.length - 1; i >= 0; i--) {
-    rev += str[i];
+    rev.push(str[i]);
   }
 
-  return rev;
+  return rev.join("");
 }
 
 console.log(mreverse("olleH"));
 
-// Find two distinct elements in an array whose sum equals a target. Return their indices.
+// Return the number that appears an odd number of times in the array.
+// Assume exactly one such number exists, and all others appear an even number of times.
 
-function twoSum(arr, target) {
-  // // Bruteforce
+function odd(arr) {
+  return arr.reduce((a, b) => a ^ b, 0);
+}
 
-  // for (let i = 0; i < arr.length; i++) {
-  //   for (let j = i + 1; j < arr.length; j++) {
-  //     if (arr[i] + arr[j] === target) return [i, j];
-  //   }
-  // }
-  // return null;
+console.log(odd([1, 2, 2, 1, 3]));
+console.log(odd([7, 3, 7, 5, 5, 3, 9]));
+console.log(odd([4, 4, 6, 6, 9, 9, 2, 2, 11]));
+console.log(odd([42]));
+console.log(odd([1, 1, 2, 2, 3, 3])); // Edge Case
 
-  // Optimal
+// Manually split a string using space as the delimiter (like str.split(" ")), without using .split().
 
-  let lookup = {};
+function msplit(str) {
+  let word = "";
+  let arr = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    let diff = target - arr[i];
-
-    if (lookup.hasOwnProperty(diff)) {
-      return [lookup[diff], i];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") word += str[i];
+    else {
+      arr.push(word);
+      word = "";
     }
-
-    lookup[arr[i]] = i;
   }
+  arr.push(word);
 
-  return null;
+  return arr;
 }
 
-console.log(twoSum([1, 4, 6, 8, 3, 9], 15));
+console.log(msplit("The quick brown fox"));
 
-// Return an object containing the count of each character in a string.
+// Convert a string to Title Case, meaning capitalize the first letter of each word.
+// Assume the input has no extra spaces or punctuation.
 
-function freqCounter(str) {
-  const count = {};
-
-  for (const char of str) {
-    count[char] = (count[char] || 0) + 1;
-  }
-
-  return count;
+function titleCase(str) {
+  let nstr = str.split(" ");
+  nstr = nstr.map((s) => s[0].toUpperCase() + s.slice(1));
+  return nstr.join(" ");
 }
 
-console.log(freqCounter("Johnny"));
+console.log(titleCase("the quick brown fox"));
 
-// Find the third least frequently occurring number in an array.
+// Reverse the order of words in a sentence (not the characters within the words).
+// Assume the input is clean (no extra spaces or punctuation).
 
-function thirdLeastEle(arr) {
-  const counts = {};
+function revOrder(str) {
+  let word = "";
+  let nstr = [];
+  let arr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " ") {
+      word += str[i];
+    }
+    if (str[i] === " ") {
+      arr.push(word);
+      word = "";
+    }
+  }
+  arr.push(word);
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    nstr.push(arr[i]);
+  }
+
+  return nstr.join(" ");
+}
+
+console.log(revOrder("the quick brown fox"));
+
+// Given a deeply nested array (may contain other arrays within arrays), find the maximum number.
+
+function maxInDeepNestedArr(arr) {
+  let maxi = -Infinity;
 
   for (const val of arr) {
-    counts[val] = (counts[val] || 0) + 1;
+    if (Array.isArray(val)) {
+      maxi = Math.max(maxi, maxInDeepNestedArr(val));
+    } else maxi = Math.max(maxi, val);
   }
 
-  let freq = Object.entries(counts);
-
-  if (freq.length < 3) return null;
-
-  return Number(freq.sort((a, b) => a[1] - b[1])[2][0]);
+  return maxi;
 }
 
-console.log(thirdLeastEle([14, 12, 12, 13, 13, 13, 11, 11, 11, 11, 15]));
+console.log(maxInDeepNestedArr([1, [2, [3, 4], 5], 6]));
+console.log(maxInDeepNestedArr([1, [2, [3, [4, [5]]]], 6]));
+
+// Alternate the case of each character in a string.
+
+function altCase(str) {
+  return str
+    .split("")
+    .map((s) => (s === s.toUpperCase() ? s.toLowerCase() : s.toUpperCase()))
+    .join("");
+}
+
+console.log(altCase("hELLO"));
