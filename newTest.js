@@ -59,3 +59,21 @@ function solve(str) {
 }
 
 console.log(solve("arinjay"));
+
+// Palindrome string
+
+function solve2(str) {
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) return false;
+    left++;
+    right--;
+  }
+  return true;
+}
+
+console.log(solve2("madam"));
+console.log(solve2("abccba"));
+console.log(solve2("abcdcbad"));
