@@ -1,4 +1,4 @@
-// Find two distinct elements in the array whose sum equals the target, and return their indices.
+/** Find two distinct elements in the array whose sum equals the target, and return their indices. */
 
 function twoSum(arr, target) {
   // // Bruteforce -> TC : O(n^2)
