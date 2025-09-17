@@ -1,5 +1,6 @@
-// Given two strings s and t, return true if t is an anagram of s, and false otherwise.
-// Checks if two strings are anagrams, accounting for all Unicode characters
+/** Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Checks if two strings are anagrams, accounting for all Unicode characters.
+*/
 
 function validAnagram(s, t) {
   if (s.length !== t.length) return false;
