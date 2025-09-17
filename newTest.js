@@ -1,79 +1,95 @@
-// Given a deeply nested object, return a flat object where the keys are the paths in dot notation
+/** Find two distinct elements in an array whose sum equals a target; Return their indices. */
 
-function flatObj(obj, pkey = "", res = {}) {
-  for (const key in obj) {
-    const fullKey = pkey ? `${pkey}.${key}` : key;
+function prac(arr, target) {
+  // // Bruteforce
 
-    if (
-      typeof obj[key] === "object" &&
-      obj[key] !== null &&
-      !Array.isArray(obj[key])
-    ) {
-      flatObj(obj[key], fullKey, res);
-    } else {
-      res[fullKey] = obj[key];
-    }
-  }
+  // for (let i = 0; i < arr.length; i++) {
+  //   for (let j = i + 1; j < arr.length; j++) {
+  //     if (arr[i] + arr[j] === target) {
+  //       return [i, j];
+  //     }
+  //   }
+  // }
+  // return null;
 
-  return res;
-}
+  // Optimal
 
-const nested = {
-  a: { b: { c: 1, d: 2 } },
-  x: 3,
-};
+  let lookup = {};
 
-console.log(flatObj(nested));
-
-// Implementation of Bubble Sort algorithm
-
-function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
-    let swapped = false;
-    for (let j = 0; j < arr.length - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-        swapped = true;
-      }
+    let diff = target - arr[i];
+
+    if (lookup.hasOwnProperty(diff)) {
+      return [lookup[diff], i];
     }
-    if (!swapped) break;
-  }
 
-  return arr;
+    lookup[arr[i]] = i;
+  }
+  return null;
 }
 
-console.log(bubbleSort([12, 43, 54, 6, 587, 23, 63]));
+console.log(prac([11, 12, 13, 14, 15, 16, 17, 18, 19], 37));
 
-// Character Occurrence
+/** Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+Checks if two strings are anagrams, accounting for all Unicode characters.
+*/
 
-function solve(str) {
-  let count = {};
+function anagram(s, t) {
+  if (s.length !== t.length) return false;
 
-  for (let i = 0; i < str.length; i++) {
-    let char = str[i];
+  let counts = {};
 
-    count[char] = (count[char] || 0) + 1;
+  for (let char of s) {
+    counts[char] = (counts[char] || 0) + 1;
   }
 
-  return count;
-}
-
-console.log(solve("arinjay"));
-
-// Palindrome string
-
-function solve2(str) {
-  let left = 0;
-  let right = str.length - 1;
-
-  while (left < right) {
-    if (str[left] !== str[right]) return false;
-    left++;
-    right--;
+  for (let char of t) {
+    if (!counts[char]) return false;
+    counts[char]--;
   }
+
   return true;
 }
 
-console.log(solve2("madam"));
-console.log(solve2("abccba"));
-console.log(solve2("abcdcbad"));
+console.log(anagram("anagram", "nagaram"));
+
+/** Finds the 3rd least occurred number in an array */
+
+function thleast(arr) {
+  let counts = {};
+
+  for (let val of arr) {
+    counts[val] = (counts[val] || 0) + 1;
+  }
+
+  let freq = Object.entries(counts);
+
+  if (freq.length < 3) return null;
+
+  return Number(freq.sort((a, b) => a[1] - b[1])[2][0]);
+}
+
+console.log(thleast([14, 12, 12, 13, 13, 13, 11, 11, 11, 11, 15]));
+
+/** Finds a subset of the array whose elements add up to the target. */
+
+function subsum(arr, tot) {
+  let num = [];
+
+  function track(start, sum) {
+    if (sum === tot) return true;
+    if (sum > tot) return false;
+
+    for (let i = start; i < arr.length; i++) {
+      num.push(arr[i]);
+      if (track(i + 1, sum + arr[i])) return true;
+      num.pop();
+    }
+
+    return false;
+  }
+
+  return track(0, 0) ? num : -1;
+}
+
+console.log(subsum([1, 2, 3, 4, 2, 1, 3, 5], 9));
