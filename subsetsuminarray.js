@@ -1,4 +1,4 @@
-// Finds a subset of the array whose elements add up to the target
+/** Finds a subset of the array whose elements add up to the target. */
 
 function subsetsuminarray(arr, tot) {
   var num = [];
