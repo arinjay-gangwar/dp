@@ -1,4 +1,4 @@
-// Finds the 3rd least occurred number in an array
+/** Finds the 3rd least occurred number in an array */
 
 function thirdLeastOccrEleInArray(arr) {
   let counts = {};
