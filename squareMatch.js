@@ -1,5 +1,7 @@
-// Write a function, which accepts 2 arrays. The function should return true if every value in the,
-//  arr1 has it's corresponding value squared in the arr2. The frequency of values must be the same.
+/** Write a function, which accepts 2 arrays. The function should return true if every value in the,
+ arr1 has it's corresponding value squared in the arr2.
+ - The frequency of values must be the same.
+*/
 
 function squareMatch(arr1, arr2) {
   // if (arr1.length !== arr2.length) {
