@@ -1,4 +1,4 @@
-// Remove Duplicates by ID from an Array of Objects
+/** Remove Duplicates by ID from an Array of Objects */
 
 function removeDuplicatesByIdFromArrayofObjs(arr) {
   const seen = new Set();
