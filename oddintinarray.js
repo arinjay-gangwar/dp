@@ -1,5 +1,6 @@
-// Finds the number that appears an odd number of times in the array
-// Assumes exactly one such number, and all others appear an even number of times
+/** Finds the number that appears an odd number of times in the array
+- Assumes exactly one such number, and all others appear an even number of times
+*/
 
 function oddinitinarray(arr) {
   // Using XOR
