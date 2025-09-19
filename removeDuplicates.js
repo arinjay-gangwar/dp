@@ -1,4 +1,4 @@
-// Remove Duplicates from an Array
+/** Remove Duplicates from an Array */
 
 function removeDuplicates(arr) {
   // Option 1: Using Set to automatically remove duplicates
