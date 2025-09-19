@@ -1,4 +1,4 @@
-// Function to reverse the order of words in a sentence (words only, not characters)
+/** Function to reverse the order of words in a sentence (words only, not characters) */
 
 function reverseWords(str) {
   let words = str.split(" ");
