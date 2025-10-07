@@ -59,7 +59,7 @@ function solve(products) {
     groups[p.category].push(p);
   });
 
-  // console.log(groups);
+  console.log(groups);
 
   const result = {};
 
