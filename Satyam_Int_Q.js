@@ -77,7 +77,7 @@ function solve(products) {
     const productNamesSortedByPrice = [...items]
       .sort((a, b) => a.price - b.price)
       .map((i) => i.name);
-    // console.log(productNamesSortedByPrice);
+    console.log(productNamesSortedByPrice);
 
     result[category] = {
       total,
