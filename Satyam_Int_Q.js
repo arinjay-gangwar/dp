@@ -65,7 +65,7 @@ function solve(products) {
 
   for (const category in groups) {
     const items = groups[category];
-    // console.log(items);
+    console.log(items);
     const total = items.reduce((sum, i) => sum + i.price, 0);
     // console.log(total);
     const average = Number((total / items.length).toFixed(2));
