@@ -10,22 +10,25 @@ function twoSum(arr, target) {
   //     }
   //   }
   // }
-  // return null;
+  // return [];
 
   // Optimal -> TC : O(n) using Hash
 
-  var lookup = {};
+  const map = new Map();
 
   for (let i = 0; i < arr.length; i++) {
-    let diff = target - arr[i];
+    const diff = target - arr[i];
 
-    if (lookup.hasOwnProperty(diff)) {
-      return [lookup[diff], i];
+    if (map.has(diff)) {
+      return [map.get(diff), i];
     }
 
-    lookup[arr[i]] = i;
+    map.set(arr[i], i);
   }
-  return null;
+  return [];
 }
 
+console.log(twoSum([3, 2, 8, 3, 7, 9], 16));
 console.log(twoSum([3, 2, 8, 3, 7, 9], 15));
+console.log(twoSum([3, 2, 8, 3, 7, 9], 10));
+console.log(twoSum([3, 2, 8, 3, 7, 9], 8));
